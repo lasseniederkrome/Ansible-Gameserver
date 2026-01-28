@@ -12,4 +12,5 @@ For this, we need an ssh-agent in the background to work, Ansible cant take care
 
 # How do we run it?
 
-ansible-playbook --user root --ask-become-pass -i hosts playbook_hello_world.yml
+eval "$(ssh-agent -s)"
+ssh-add /home/lasse/.ssh/strato612

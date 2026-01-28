@@ -1,7 +1,10 @@
----
 # This playbook prints a simple debug message
-- name: Echo
-
+- name: My first Playbook
+  hosts: initial
   tasks:
-    - name: print a message
-      msg: Hello, World!
+    - name: Ping my host
+      ansible.builtin.ping:
+
+    - name: Print message
+      ansible.builtin.debug:
+        msg: Hello world
