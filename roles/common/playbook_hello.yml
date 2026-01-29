@@ -1,0 +1,7 @@
+# This playbook prints a simple message
+- name: My first Playbook
+  hosts: initial
+  tasks:
+    - name: Print message
+      ansible.builtin.debug:
+        msg: Hello Carlo!
