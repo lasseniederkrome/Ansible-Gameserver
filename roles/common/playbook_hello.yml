@@ -1,4 +1,5 @@
 # This playbook prints a simple message
+#
 - name: My first Playbook
   hosts: initial
   tasks:

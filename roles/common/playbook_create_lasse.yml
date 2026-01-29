@@ -1,0 +1,13 @@
+# This playbook adds me as a user to my servers, creates my HomeDir and grants me admin
+
+- name: Add Me please!
+  hosts: initial
+  tasks:
+    - name: Creates User lasse, creates him a HomeDir and adds him to the group of Sudo-Users.
+      ansible.builtin.user:
+        name: "lasse"
+        # This is a hased passwort, creatd with this: https://bamtech.medium.com/how-to-create-a-hashed-password-1b85a4ebe54
+        password: $6$GKytNZEZx46aGMGv$oLzmS35VSLVZj9Mx9IGo095ZFi0.sKOqeDjile5rJoNr2PI3c14seRo3mPPWs/mwrKDOHSXuDi3fUl5IDZ8b//
+        state: present
+        groups: wheel
+        create_home: true
