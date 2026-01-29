@@ -1,0 +1,4 @@
+# Executes my other playbooks, currently testing stuff
+
+- import_playbook: playbook_ping.yml
+- import_playbook: playbook_hello.yml

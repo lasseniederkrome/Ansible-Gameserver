@@ -1,0 +1,13 @@
+# This Playbooks updates a Server which runs AlmaLinux9
+- name: Update Server
+  hosts: initial
+  become: true
+  tasks:
+    - name: Update DNF Packages/Cache
+      ansible.builtin.dnf:
+        update_cache: true
+
+    - name: Apply Updates
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest

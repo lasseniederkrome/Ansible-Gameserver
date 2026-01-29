@@ -2,15 +2,11 @@
 
 Setup for setting up a server with ansible + docker container for different gameservers, e.G. Hytale, Minecraft, Terraria
 
-# What to do?
-
-We have a passphrase proteced root ssh key
-
-We need to run the first playbook via root with the key
-
-For this, we need an ssh-agent in the background to work, Ansible cant take care of this alone
-
 # How do we run it?
 
-eval "$(ssh-agent -s)"
-ssh-add /home/lasse/.ssh/strato612
+1. SSH Agent
+   eval "$(ssh-agent -s)"
+   ssh-add /home/lasse/.ssh/strato612
+
+2. Correct playbook Command:
+   ansible-playbook --user root roles/common/playbook_hello.yml
