@@ -21,3 +21,6 @@
 
 - name: Import Install tools
   import_playbook: ../common/playbook_install_tools.yml
+
+- name: Import Install login skript
+  import_playbook: ../common/playbook_login_skript.yml

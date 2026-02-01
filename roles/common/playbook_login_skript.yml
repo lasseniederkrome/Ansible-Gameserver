@@ -1,0 +1,22 @@
+# This playbook enables fastfetch on interactive SSH logins
+- name: Enable fastfetch on SSH login
+  hosts: initial
+  become: true
+  tasks:
+    - name: Ensure fastfetch is installed
+      ansible.builtin.dnf:
+        name: fastfetch
+        state: present
+
+    - name: Add fastfetch login script
+      ansible.builtin.copy:
+        dest: /etc/profile.d/fastfetch.sh
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          # Run fastfetch on interactive SSH sessions only
+          if [ -n "$SSH_CONNECTION" ] && [ -t 1 ] && [ -z "$FASTFETCH_RAN" ]; then
+            export FASTFETCH_RAN=1
+            command -v fastfetch >/dev/null 2>&1 && fastfetch
+          fi
