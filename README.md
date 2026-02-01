@@ -6,7 +6,7 @@ Setup for setting up a server with ansible + docker container for different game
 
 1. SSH Agent
    eval "$(ssh-agent -s)"
-   ssh-add /home/lasse/.ssh/strato612
+   ssh-add ~/.ssh/strato612
 
 2. Correct playbook Command:
    ansible-playbook --user root roles/common/playbook_hello.yml
