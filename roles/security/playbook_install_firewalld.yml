@@ -34,11 +34,11 @@
         name: firewalld
         state: started
 
-    - name: Check firewalld status
+    - name: Check firewalld statuas
       ansible.builtin.command: systemctl is-active firewalld
       register: security_firewalld_status
       changed_when: false
 
-    - name: Print status firewalld
+    - name: Check status firewalld
       ansible.builtin.debug:
         msg: "firewalld is {{ security_firewalld_status.stdout }}"

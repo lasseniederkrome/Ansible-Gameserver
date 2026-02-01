@@ -13,3 +13,6 @@
 
 - name: Import Install Firewalld
   import_playbook: ../security/playbook_install_firewalld.yml
+
+- name: Import Install Fail2ban
+  import_playbook: ../security/playbook_fail2ban.yml

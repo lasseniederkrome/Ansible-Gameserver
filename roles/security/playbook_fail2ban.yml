@@ -1,0 +1,48 @@
+- name: Install, configure, enable and start fail2ban
+  hosts: initial
+  become: true
+  tasks:
+    - name: Ensure EPEL repo is installed (required for fail2ban on EL9)
+      ansible.builtin.dnf:
+        name: epel-release
+        state: present
+
+    - name: Install fail2ban
+      ansible.builtin.dnf:
+        name: fail2ban
+        state: present
+
+    - name: Configure fail2ban for sshd (ssh)
+      ansible.builtin.copy:
+        dest: /etc/fail2ban/jail.d/sshd.local
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          [DEFAULT]
+          backend = systemd
+
+          [sshd]
+          enabled = true
+          bantime = 1h
+          findtime = 10m
+          maxretry = 5
+
+    - name: Enable fail2ban at boot
+      ansible.builtin.systemd:
+        name: fail2ban
+        enabled: true
+
+    - name: Start fail2ban
+      ansible.builtin.systemd:
+        name: fail2ban
+        state: started
+
+    - name: Check fail2ban status
+      ansible.builtin.command: systemctl is-active fail2ban
+      register: security_fail2ban_status
+      changed_when: false
+
+    - name: Print status fail2ban
+      ansible.builtin.debug:
+        msg: "fail2ban is {{ security_fail2ban_status.stdout }}"
