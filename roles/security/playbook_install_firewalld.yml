@@ -1,20 +1,3 @@
-# What needs to be done:
-#
-# 1. install firewalld with sudo dnf install firewalld -y
-#
-#
-# 2. enable firewalld at boot: sudo systemctl enable firewalld
-#
-#
-# 3. start firewalld : sudo systemctl start firewalld
-#
-#
-# 4. check status firewalld: sudo systemctl status firewalld
-# -> spit out message if running and active or if not
-#
-#
-#
-
 - name: Install, enable and start firewalld
   hosts: initial
   become: true
@@ -41,4 +24,4 @@
 
     - name: Check status firewalld
       ansible.builtin.debug:
-        msg: "firewalld is {{ security_firewalld_status.stdout }}"
+        msg: "firewalld is {{ firewalld_status.stdout }}"
