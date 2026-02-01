@@ -1,7 +1,15 @@
 # Executes my other playbooks, currently testing stuff
-
 - name: Import Ping
   import_playbook: playbook_ping.yml
 
 - name: Import Hellow
   import_playbook: playbook_hello.yml
+
+- name: Import Update Server
+  import_playbook: playbook_update_server.yml
+
+- name: Import Create Lasse
+  import_playbook: playbook_create_lasse.yml
+
+- name: Import Install Firewalld
+  import_playbook: ../security/playbook_install_firewalld.yml
