@@ -1,4 +1,6 @@
 # Executes my other playbooks, currently testing stuff
+#
+#
 - name: Import Ping
   import_playbook: playbook_ping.yml
 
@@ -16,3 +18,6 @@
 
 - name: Import Install Fail2ban
   import_playbook: ../security/playbook_fail2ban.yml
+
+- name: Import Install tools
+  import_playbook: ../common/playbook_install_tools.yml

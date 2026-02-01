@@ -1,0 +1,17 @@
+# Install common admin tools defined in the list below
+- name: Install Tools
+  hosts: initial
+  become: true
+  tasks:
+    - name: Install Tool-List
+      ansible.builtin.dnf:
+        name:
+          - neovim
+          - tmux
+          - screen
+          - git
+          - btop
+          - rsync
+          - tar
+          - unzip
+        state: present
